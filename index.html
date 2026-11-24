@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Scalper EA</title>
+
+<style>
+body {
+  background: #0b1220;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 450px;
+  margin: auto;
+  background: #17243a;
+  padding: 25px;
+  border-radius: 18px;
+}
+
+h1 { color: gold; }
+
+.box {
+  background: #0d192b;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 10px;
+}
+
+select, button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+select {
+  background: #263750;
+  color: white;
+}
+
+.start {
+  background: #08a66c;
+  color: white;
+}
+
+.stop {
+  background: #d93648;
+  color: white;
+}
+
+#status {
+  color: orange;
+  font-weight: bold;
+}
+
+p { color: #b8c7d9; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>GOLD SCALPER EA</h1>
+<p>HFM MT5 Automated Trading Dashboard</p>
+
+<div class="box">
+<h3>BOT STATUS</h3>
+<h2 id="status">STOPPED</h2>
+</div>
+
+<div class="box">
+<h3>ACCOUNT TYPE</h3>
+<select id="account">
+<option value="DEMO">DEMO ACCOUNT</option>
+<option value="REAL">REAL ACCOUNT</option>
+</select>
+</div>
+
+<div class="box">
+<h3>TRADING SETTINGS</h3>
+<p>Symbol: XAUUSD</p>
+<p>Lot Size: 0.01</p>
+<p>Entry Timeframe: M1</p>
+<p>Trend Timeframe: M5</p>
+<p>Strategy: EMA 9 / EMA 21</p>
+</div>
+
+<button class="start" onclick="startBot()">
+START BOT
+</button>
+
+<button class="stop" onclick="stopBot()">
+STOP BOT
+</button>
+
+<div class="box">
+<h3>CONNECTION</h3>
+<p id="connection">MT5 NOT CONNECTED</p>
+</div>
+
+<div class="box">
+<h3>ACTIVITY</h3>
+<p id="activity">Waiting for activation...</p>
+</div>
+
+</div>
+
+<script>
+
+function startBot() {
+
+let account = document.getElementById("account").value;
+
+if(account === "REAL") {
+ alert("Real trading is not connected. Connect and test the MT5 backend first.");
+ return;
+}
+
+document.getElementById("status").innerText = "DEMO REQUESTED";
+
+document.getElementById("activity").innerText =
+"Demo start requested. No trades are being executed.";
+
+alert("Demo mode selected. Trading engine is not connected.");
+
+}
+
+function stopBot() {
+
+document.getElementById("status").innerText = "STOPPED";
+
+document.getElementById("activity").innerText =
+"Stop requested. No trading connection is active.";
+
+}
+
+</script>
+
+</body>
+</html>
